@@ -3,8 +3,8 @@ import App from '../App'
 const home = r => require.ensure([], () => r(require('../page/home/home')), 'home')
 const city = r => require.ensure([], () => r(require('../page/city/city')), 'city')
 const msite = r => require.ensure([], () => r(require('../page/msite/msite')), 'msite')
-
-
+const food = r => require.ensure([], () => r(require('../page/food/food')), 'food')
+const search = r => require.ensure([], () => r(require('../page/search/search')), 'search')
 
 export default [{
     path: '/',
@@ -28,6 +28,14 @@ export default [{
             path: '/msite',
             component: msite,
             meta: { keepAlive: true },
+        },
+        {
+            path: '/food',
+            component: food
+        },
+        {
+            path: '/search/:geohash',
+            component: search
         },
     ]
 }]
