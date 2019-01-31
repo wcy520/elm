@@ -21,6 +21,15 @@ const invoice = r => require.ensure([], () => r(require('../page/confirmOrder/ch
 const chooseAddress = r => require.ensure([], () => r(require('../page/confirmOrder/children/chooseAddress')), 'chooseAddress')
 const addAddress = r => require.ensure([], () => r(require('../page/confirmOrder/children/children/addAddress')), 'addAddress')
 const searchAddress = r => require.ensure([], () => r(require('../page/confirmOrder/children/children/children/searchAddress')), 'searchAddress')
+const forget = r => require.ensure([], () => r(require('../page/forget/forget')), 'forget')
+const balance = r => require.ensure([], () => r(require('../page/balance/balance')), 'balance')
+const balanceDetail = r => require.ensure([], () => r(require('../page/balance/children/detail')), 'balanceDetail')
+const benefit = r => require.ensure([], () => r(require('../page/benefit/benefit')), 'benefit')
+const coupon = r => require.ensure([], () => r(require('../page/benefit/children/coupon')), 'coupon')
+const hbDescription = r => require.ensure([], () => r(require('../page/benefit/children/hbDescription')), 'hbDescription')
+const hbHistory = r => require.ensure([], () => r(require('../page/benefit/children/hbHistory')), 'hbHistory')
+const exchange = r => require.ensure([], () => r(require('../page/benefit/children/exchange')), 'exchange')
+const commend = r => require.ensure([], () => r(require('../page/benefit/children/commend')), 'commend')
 export default [{
     path: '/',
     component: App, //顶层路由，对应index.html
@@ -112,6 +121,41 @@ export default [{
                     }]
                 }, ]
             }, ]
+        },
+         //修改密码页
+         {
+            path: '/forget',
+            component: forget
+        },
+         //余额
+         {
+            path: 'balance',
+            component: balance,
+            children: [{
+                path: 'detail', //余额说明
+                component: balanceDetail,
+            }, ]
+        },
+        //我的优惠页
+        {
+            path: 'benefit',
+            component: benefit,
+            children: [{
+                path: 'coupon', //代金券说明
+                component: coupon,
+            }, {
+                path: 'hbDescription', //红包说明
+                component: hbDescription,
+            }, {
+                path: 'hbHistory', //历史红包
+                component: hbHistory,
+            }, {
+                path: 'exchange', //兑换红包
+                component: exchange,
+            }, {
+                path: 'commend', //推荐有奖
+                component: commend,
+            },]
         },
     ]
 }]
