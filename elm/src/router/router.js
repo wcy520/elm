@@ -29,6 +29,8 @@ const coupon = r => require.ensure([], () => r(require('../page/benefit/children
 const hbDescription = r => require.ensure([], () => r(require('../page/benefit/children/hbDescription')), 'hbDescription')
 const hbHistory = r => require.ensure([], () => r(require('../page/benefit/children/hbHistory')), 'hbHistory')
 const exchange = r => require.ensure([], () => r(require('../page/benefit/children/exchange')), 'exchange')
+const points = r => require.ensure([], () => r(require('../page/points/points')), 'points')
+const pointsDetail = r => require.ensure([], () => r(require('../page/points/children/detail')), 'pointsDetail')
 const commend = r => require.ensure([], () => r(require('../page/benefit/children/commend')), 'commend')
 export default [{
     path: '/',
@@ -38,6 +40,19 @@ export default [{
         {
             path: '',
             redirect: '/home'
+        },
+        {
+            path: '/login',
+            component: login
+        },
+         //我的积分页
+         {
+            path: 'points',
+            component: points,
+            children: [{
+                path: 'detail', //积分说明
+                component: pointsDetail,
+            }, ]
         },
         //首页城市列表页
         {
